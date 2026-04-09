@@ -2,6 +2,7 @@
 #include "mainwindow.h"
 #include "version.h"
 
+
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
