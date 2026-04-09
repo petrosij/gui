@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(gui VERSION 1.2.0)
+project(gui VERSION 1.3.0)
 message(STATUS "Building ${PROJECT_NAME} version ${PROJECT_VERSION}")
 
 
