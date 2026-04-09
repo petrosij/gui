@@ -45,19 +45,24 @@ bump_version() {
 # Читаем сообщение коммита
 COMMIT_MSG=$(cat "$1" 2>/dev/null || echo "")
 
+echo "DEBUG: Commit message = '$COMMIT_MSG'"
+
 # Определяем тип обновления
-if echo "$COMMIT_MSG" | grep -qE '^breaking|^major|!:' || \
-   echo "$COMMIT_MSG" | grep -qE 'BREAKING CHANGE:'; then
+if echo "$COMMIT_MSG" | grep -qE '^breaking|^major|!:' || echo "$COMMIT_MSG" | grep -q 'BREAKING CHANGE:'; then
+    echo "DEBUG: Matched MAJOR"
     NEW_VERSION=$(bump_version "$CURRENT_VERSION" "major")
     TYPE="MAJOR"
 elif echo "$COMMIT_MSG" | grep -qE '^feat|^feature|^new'; then
+    echo "DEBUG: Matched MINOR (feat)"
     NEW_VERSION=$(bump_version "$CURRENT_VERSION" "minor")
     TYPE="MINOR"
 elif echo "$COMMIT_MSG" | grep -qE '^fix|^bugfix|^hotfix|^patch'; then
+    echo "DEBUG: Matched PATCH (fix)"
     NEW_VERSION=$(bump_version "$CURRENT_VERSION" "patch")
     TYPE="PATCH"
 else
-    echo "Версия не изменена (нет ключевого слова в commit message)"
+    echo "DEBUG: No match"
+    echo "Версия не изменена"
     exit 0
 fi
 
