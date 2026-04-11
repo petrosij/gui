@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(gui VERSION 1.5.0)
+project(gui VERSION 1.0.2)
 message(STATUS "Building ${PROJECT_NAME} version ${PROJECT_VERSION}")
 
 
@@ -13,11 +13,12 @@ set(CMAKE_AUTORCC ON)
 
 find_package(Qt6 REQUIRED COMPONENTS Core Widgets)
 
-set(SOURCES src/main.cpp src/mainwindow.cpp)
-set(HEADERS include/mainwindow.h)
-set(UI_FILES resources/mainwindow.ui)
+set(SOURCES src/main.cpp)
+set(RESOURCES resources.qrc)  # Ресурсы для Qt проекта
+#set(HEADERS include/mainwindow.h)
+#set(UI_FILES resources/mainwindow.ui)
 
-add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS} ${UI_FILES})
+add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS} ${RESOURCES})
 
 target_include_directories(
     ${PROJECT_NAME} PRIVATE
