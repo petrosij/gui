@@ -8,7 +8,7 @@ int main(int argc, char *argv[])
 
     QPushButton versionButton;
     QFont const buttonFont("Courier");
-    QIcon buttonIcon ("../images/icon_mri.jpg");
+    QIcon buttonIcon (":/images/icon_mri.jpg");
     versionButton.setText(PROJECT_VERSION);
     versionButton.setToolTip("The version of the application");
     versionButton.setFont(buttonFont);
